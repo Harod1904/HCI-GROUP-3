@@ -13,15 +13,13 @@ return new class extends Migration
     {
         Schema::create('tasks', function (Blueprint $table) {
             $table->id('task_id');
-    $table->string('title');
-    $table->text('description');
-    $table->date('due_date');
-    $table->string('status');
-    $table->string('priority');
-    $table->foreignId('project_id')->constrained('projects', 'project_id')->onDelete('cascade');
-    // Self-relation for subtasks (Optional but in your ERD)
-    $table->foreignId('parent_task_id')->nullable()->constrained('tasks', 'task_id');
-    $table->timestamps();
+            $table->string('title');
+            $table->text('description');
+            $table->date('due_date');
+            $table->string('status');
+            $table->string('priority');
+            $table->foreignId('project_id')->constrained('projects', 'project_id')->onDelete('cascade');
+            $table->timestamps();
         });
     }
 
@@ -30,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('milestone');
+        Schema::dropIfExists('tasks');
     }
 };

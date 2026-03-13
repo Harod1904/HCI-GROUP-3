@@ -19,7 +19,7 @@ return new class extends Migration
     $table->date('due_date')->nullable();
     $table->string('status'); // You could also use ->enum()
     $table->decimal('budget', 10, 2)->nullable();
-    $table->foreignId('owner_id')->constrained('users')->onDelete('cascade');
+    $table->foreignId('user_id')->constrained('users', 'user_id')->onDelete('cascade');
     $table->timestamps();
         });
     }

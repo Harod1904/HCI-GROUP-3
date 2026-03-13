@@ -13,11 +13,11 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
            $table->id('user_id'); // Matches your ERD
-    $table->string('username');
-    $table->string('email')->unique();
-    $table->string('password_hash');
-    $table->timestamp('join_date')->useCurrent();
-    $table->timestamps();
+            $table->string('username');
+            $table->string('email')->unique();
+            $table->string('password_hash');
+            $table->timestamp('join_date')->useCurrent();
+            $table->timestamps();
         });
     }
 

@@ -13,12 +13,12 @@ return new class extends Migration
     {
         Schema::create('milestone', function (Blueprint $table) {
             $table->id('milestone_id');
-    $table->string('title');
-    $table->date('due_date')->nullable();
-    $table->boolean('is_completed')->default(false);
-    $table->foreignId('project_id')->constrained('projects')->onDelete('cascade');
-    $table->foreignId('assigned_to_user_id')->constrained('users')->onDelete('set null');
-    $table->timestamps();
+            $table->string('title');
+            $table->date('due_date')->nullable();
+            $table->boolean('is_completed')->default(false);
+            $table->foreignId('project_id')->constrained('projects', 'project_id')->onDelete('cascade');
+            $table->foreignId('assigned_to_user_id')->constrained('users', 'user_id')->onDelete('cascade');
+            $table->timestamps();
         });
     }
 
